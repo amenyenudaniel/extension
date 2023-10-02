@@ -3,61 +3,153 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
     <title>HelpMeOut</title>
+    <link rel="stylesheet" href="./output.css" />
   </head>
   <body>
-    <main>
-      <nav>
-        <div class="logo">
+    <div
+      class="w-[300px] h-[439px] py-8 px-6 z-[10] bg-white shadow-2xl flex flex-col justify-between"
+      id="popup"
+    >
+      <div class="w-full flex justify-between">
+        <div class="flex w-[137px] justify-between h-[40px] items-center">
           <img src="/images/logo.svg" alt="logo" />
-          <p>HelpMeOut</p>
+          <h1 class="font-inter font-bold text-[#100A42] text-[16px]">
+            HelpMeOut
+          </h1>
         </div>
-        <div class="close">
-          <img src="/images/settings.svg" alt="setting__image" />
-          <img src="/images/close-circle.svg" alt="close__image" />
+        <div class="flex gap-2">
+          <img src="/images/setting.svg" alt="setting" />
+          <img
+            src="/images/close.svg"
+            alt="close"
+            class="cursor-pointer"
+            id="close"
+          />
         </div>
-      </nav>
-
-      <p class="content">
-        This extension helps you record <br />
-        and share help videos with ease.
-      </p>
-
-      <div class="tabs">
+      </div>
+      <h1 class="text-[14px] font-work_sans w-[225px] text-[#413C6D]">
+        This extension helps you record and share help videos with ease.
+      </h1>
+      <div class="flex justify-around">
+        <div class="flex flex-col gap-2 items-center">
+          <img
+            src="/images/monitor.svg"
+            alt="monitor"
+            class="w-[32px] h-[32px]"
+          />
+          <h1 class="text-[14px] font-work_sans text-[#413C6D]">Full screen</h1>
+        </div>
+        <div class="flex flex-col gap-2 items-center">
+          <img src="/images/tab.svg" alt="tab" class="w-[32px] h-[32px]" />
+          <h1 class="text-[14px] font-work_sans text-[#413c6d] font-bold">
+            Current Tab
+          </h1>
+        </div>
+      </div>
+      <div
+        class="w-full rounded-xl flex justify-between items-center border border-[#100A42] h-[48px] px-4"
+      >
+        <div class="flex justify-between gap-2 items-center">
+          <img src="/images/camera.svg" alt="camera" />
+          <h1 class="text-[14px] font-work_sans text-[#413C6D]">Camera</h1>
+        </div>
         <div>
-          <img src="/images/tv.png" alt="tv__image" />
-          <p>Full Screen</p>
+          <div
+            class="relative w-[36px] h-[20px] bg-[#120B48] rounded-2xl cursor-pointer"
+          >
+            <img src="/images/toggle-ball.svg" alt="ball" />
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full rounded-xl flex justify-between items-center border border-[#100A42] h-[48px] px-4"
+      >
+        <div class="flex gap-2 justify-between items-center">
+          <img src="/images/mic.svg" alt="mic" />
+          <h1 class="text-[14px] font-work_sans text-[#413C6D]">Audio</h1>
         </div>
         <div>
-          <img src="/images/copy.svg" alt="copy__icon" />
-          <p>Current Tab</p>
+          <div
+            class="relative w-[36px] h-[20px] bg-[#120B48] rounded-2xl cursor-pointer"
+          >
+            <img src="/images/toggle-ball.svg" alt="ball" />
+          </div>
         </div>
       </div>
 
-      <div class="container__progress">
-        <div class="start">
-          <img src="/images/cam.svg" alt="camera" />
-          <p>Camera</p>
-        </div>
-        <label class="switch">
-          <input type="checkbox" checked />
-          <span class="slider"></span>
-        </label>
-      </div>
-      <div class="container__progress">
-        <div class="start">
-          <img src="/images/microphone.svg" alt="microphone" />
-          <p>Audio</p>
-        </div>
-        <label class="switch">
-          <input type="checkbox" checked />
-          <span class="slider"></span>
-        </label>
-      </div>
+      <button
+        class="w-full h-[51px] text-center bg-[#120B48] text-white text-[16px] rounded-lg"
+        id="startRecordingBtn"
+      >
+        Start Recording
+      </button>
+    </div>
+    <img
+      class="loader__svg"
+      src="/images/loader.svg"
+      alt="Loading ..."
+      id="loading"
+      style="display: none"
+    />
 
-      <button id="start">Start Recording</button>
-    </main>
-    <script src="popup.js"></script>
+    <div
+      class="w-[551px] h-[86px] rounded-[200px] bg-[#141414] flex justify-center items-center gap-5 px-10"
+      id="recordingContainer"
+      style="display: none"
+    >
+      <div class="flex gap-3 justify-center items-center">
+        <p class="font-inter text-xl text-white" id="timerDisplay"></p>
+        <div class="w-[10px] h-[10px] rounded-[17px] bg-[#C00404]"></div>
+      </div>
+      <div class="w-[1px] h-[48px] bg-[#E8E8E8]"></div>
+      <div class="flex flex-col justify-center items-center">
+        <div
+          class="w-[44px] h-[44px] rounded-[32px] border border-white bg-white flex justify-center items-center cursor-pointer gap-1"
+          id="pauseRecordingBtn"
+        >
+          <img src="./images/pauseOne.svg" alt="pause" />
+          <img src="./images/pauseOne.svg" alt="pause" />
+        </div>
+        <p class="text-white font-work_sans text-[12px] font-medium" id="pause">
+          Pause
+        </p>
+      </div>
+      <div class="flex flex-col justify-center items-center">
+        <div
+          class="w-[44px] h-[44px] rounded-[32px] border border-white bg-white flex justify-center items-center cursor-pointer"
+          id="stopRecordingBtn"
+        >
+          <img src="./images/stop.svg" alt="stop" />
+        </div>
+        <p class="text-white font-work_sans text-[12px] font-medium">Stop</p>
+      </div>
+      <div class="flex flex-col justify-center items-center">
+        <div
+          class="w-[44px] h-[44px] rounded-[32px] border border-white bg-white flex justify-center items-center cursor-pointer"
+        >
+          <img src="./images/camera.svg" alt="camera" />
+        </div>
+        <p class="text-white font-work_sans text-[12px] font-medium">Camera</p>
+      </div>
+      <div class="flex flex-col justify-center items-center">
+        <div
+          class="w-[44px] h-[44px] rounded-[32px] border border-white bg-white flex justify-center items-center cursor-pointer"
+        >
+          <img src="./images/mic.svg" alt="mic" />
+        </div>
+        <p class="text-white font-work_sans text-[12px] font-medium">Mic</p>
+      </div>
+      <div class="flex flex-col justify-center items-center">
+        <div
+          class="w-[44px] h-[44px] rounded-[32px] border border-black bg-[#4B4B4B] flex justify-center items-center cursor-pointer"
+          id="deleteRecordingBtn"
+        >
+          <img src="./images/delete.svg" alt="delete" />
+        </div>
+        <p class="text-[12px]">del</p>
+      </div>
+    </div>
+    <script src="/script.js"></script>
   </body>
 </html>
