@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>HelpMeOut</title>
+  </head>
+  <body>
+    <main>
+      <nav>
+        <div class="logo">
+          <img src="/images/logo.svg" alt="logo" />
+          <p>HelpMeOut</p>
+        </div>
+        <div class="close">
+          <img src="/images/settings.svg" alt="setting__image" />
+          <img src="/images/close-circle.svg" alt="close__image" />
+        </div>
+      </nav>
+
+      <p class="content">
+        This extension helps you record <br />
+        and share help videos with ease.
+      </p>
+
+      <div class="tabs">
+        <div>
+          <img src="/images/tv.png" alt="tv__image" />
+          <p>Full Screen</p>
+        </div>
+        <div>
+          <img src="/images/copy.svg" alt="copy__icon" />
+          <p>Current Tab</p>
+        </div>
+      </div>
+
+      <div class="container__progress">
+        <div class="start">
+          <img src="/images/cam.svg" alt="camera" />
+          <p>Camera</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" checked />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="container__progress">
+        <div class="start">
+          <img src="/images/microphone.svg" alt="microphone" />
+          <p>Audio</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" checked />
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <button id="start">Start Recording</button>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
