@@ -124,7 +124,7 @@ const postData = async (formData) => {
       link = link.split(".");
       link = link[0];
 
-      window.open(`https://stage-5-theta.vercel.app/`);
+      window.open(`https://stage-5-theta.vercel.app/}`);
 
       console.log("Video uploaded successfully", link);
 
